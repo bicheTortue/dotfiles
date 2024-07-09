@@ -50,8 +50,13 @@ then
   ln -fs $DIR/ssh/config $HOME/.ssh/config
   for f in ssh/*.pub
   do
-    echo "  Adding $f to authorized keys"
-    cat $f >> $HOME/.ssh/authorized_keys
+    KEY_TAG=$(awk 'END {print $NF}' $f)
+    TMP=$(grep $KEY_TAG $HOME/.ssh/authorized_keys)
+    if [ -z $TMP ]
+    then
+      echo "  Adding $f to authorized keys"
+      cat $f >> $HOME/.ssh/authorized_keys
+    fi
   done
 else
   echo "ssh is not installed on this machine"
