@@ -1,0 +1,42 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+// Sleek
+
+{
+"include": "~/.config/waybar/modules",
+"layer": "top",
+"position": "top",
+"height": 14,
+"margin-left": 10,
+"margin-right": 10,
+"margin-top": 2,
+	
+"modules-left": [
+	"custom/separator#blank",
+	"hyprland/workspaces#rw",
+	"custom/separator#line",
+	"group/motherboard",
+  "custom/separator#dot-line",
+  "network#speed",
+],
+
+"modules-center": [
+	//"idle_inhibitor",
+  "custom/weather",
+  "custom/separator#dot-line",
+	"clock",
+  "custom/separator#dot-line",
+	"custom/swaync"
+],
+		
+"modules-right": [
+  "bluetooth",
+	"custom/separator#dot-line", 
+	"mpris",
+	"custom/separator#dot-line", 
+	"group/audio",
+  "backlight#2",
+	"custom/separator#dot-line",
+  "battery",
+	"custom/power",					
+	],
+}

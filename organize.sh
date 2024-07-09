@@ -40,6 +40,26 @@ else
   echo "Kitty is not installed on this machine"
 fi
 
+# hyprland
+if [ ! -z "$(which Hyprland 2> /dev/null)" ]
+then
+  echo "Hyprland is installed, linking config"
+  rm -rf $HOME/.config/hypr
+  ln -sf $DIR/hypr $HOME/.config/hypr
+else
+  echo "Hyprland is not installed on this machine"
+fi
+
+# waybar
+if [ ! -z "$(which waybar 2> /dev/null)" ]
+then
+  echo "Waybar is installed, linking config"
+  rm -rf $HOME/.config/waybar
+  ln -sf $DIR/waybar $HOME/.config/waybar
+else
+  echo "Waybar is not installed on this machine"
+fi
+
 # starship prompt
 if [ ! -z "$(which kitty 2> /dev/null)" ]
 then
