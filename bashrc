@@ -8,9 +8,17 @@
 ###########
 # aliases #
 ###########
-alias ls='ls --color=auto'
-alias ll='ls -hlF'
-alias lla='ls -hlFa'
+if [ ! -z "$(which eza 2> /dev/null)" ]
+then
+  alias ls='eza'
+  alias ll='eza -l'
+  alias ll2='eza -l --tree --level=2'
+  alias lla='eza -la'
+else
+  alias ls='ls --color=auto'
+  alias ll='ls -hlF'
+  alias lla='ls -hlFa'
+fi
 
 #################
 # Prompt styles #
@@ -22,7 +30,7 @@ PS1='\[\033[01;36m\]\u\[\033[01;31m\]@\[\033[01;32m\]\h\[\033[01;34m\]\w\[\033[0
 ####################
 # Program Specific #
 ####################
-if [ ! -z "$(which starship > /dev/null 2> /dev/null)" ]
+if [ ! -z "$(which starship 2> /dev/null)" ]
 then
   eval "$(starship init bash)"
 fi
