@@ -40,6 +40,15 @@ else
   echo "Kitty is not installed on this machine"
 fi
 
+# starship prompt
+if [ ! -z "$(which kitty 2> /dev/null)" ]
+then
+  echo "Starship is installed, linking config"
+  ln -fs $DIR/starship.toml $HOME/.config/starship.toml
+else
+  echo "Starship is not installed on this machine"
+fi
+
 ####################
 # ssh config files #
 ####################
@@ -51,8 +60,7 @@ then
   for f in ssh/*.pub
   do
     KEY_TAG=$(awk 'END {print $NF}' $f)
-    TMP=$(grep $KEY_TAG $HOME/.ssh/authorized_keys)
-    if [ -z $TMP ]
+    if [ -z "$(grep $KEY_TAG $HOME/.ssh/authorized_keys)" ]
     then
       echo "  Adding $f to authorized keys"
       cat $f >> $HOME/.ssh/authorized_keys
@@ -74,8 +82,6 @@ ln -fs $DIR/vim $HOME/.vim
 # Files in the .config directory #
 ##################################
 
-# starship prompt
-ln -fs $DIR/starship.toml $HOME/.config/starship.toml
 
 
 # neovim
