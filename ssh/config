@@ -1,0 +1,70 @@
+  #######
+  # All #
+  #######
+
+  # Sets the correct TERM value
+Host *
+  SetEnv TERM=xterm-256color
+
+  # Allows to connect directly to tmux (session name is after the '-')
+Host *-*
+  RequestTTY yes
+  RemoteCommand tmux new-session -A -s ${%n}
+
+
+  ########
+  # LIP6 #
+  ########
+
+  # Only use tunnel server if wired connection or LIP6 wifi
+  # Tester et reparer à la maison
+  #Match exec "[ ! x$(/sbin/iwgetid --scheme) = xLIP6 ]"
+Match !host "ducas" exec "[ ! -d /sys/class/net/enp0s20u2u2 ] || [ x$(/sbin/iwgetid --scheme) = xLIP6 ]"
+  ProxyJump ducas
+
+  # Tunneling machine
+Host ducas
+  User barbaza
+  Hostname ducas.lip6.fr
+
+Host fox*
+  Hostname fox
+  User barbaza
+  ForwardX11 yes
+
+Host bip*
+  Hostname bip
+  User barbaza
+  ForwardX11 yes
+
+Host bop*
+  Hostname bop
+  User barbaza
+  ForwardX11 yes
+
+
+  ######################################
+  #             Deprecated             #
+  ######################################
+
+  ###########
+  # Tecnico #
+  ###########
+Host fatima2
+  Hostname fatima2.vps.tecnico.ulisboa.pt
+  User ist1105607
+  ForwardX11 yes
+
+Host fatima
+  Hostname fatima.vps.tecnico.ulisboa.pt
+  User ist1105607
+  ForwardX11 yes
+
+  #########
+  # INESC #
+  #########
+Host inesc
+  Hostname figaro.inesc-id.pt
+  Port 2525
+  User vbarbaza
+  ForwardX11 yes
