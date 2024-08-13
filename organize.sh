@@ -83,9 +83,13 @@ then
   mkdir -p $HOME/vim/bundle
   if [ ! -z "$(command -v git)" ]
   then
-    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+    echo "  Downloading plugin manager..."
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim &> /dev/null
+    echo "  Installing plugins..."
+    echo | vim +PluginInstall +qall &> /dev/null
+  else
+    echo "git is needed to install the plugin manager"
   fi
-  vim +PluginInstall! +qall
 else
   echo -e "${RED}Vim is not installed on this machine${NC}"
 fi
@@ -115,4 +119,5 @@ fi
 # backgrounds #
 ###############
 
+mkdir -p $HOME/Pictures/backgrounds
 ln -sf $DIR/bg $HOME/Pictures/backgrounds
