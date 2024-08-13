@@ -19,7 +19,7 @@ source $ZSH/oh-my-zsh.sh
 # Check archlinux plugin commands here
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
 
-if [ ! -z "$(which eza 2> /dev/null)" ]
+if [ ! -z "$(command -v eza)" ]
 then
   alias ls='eza'
   alias ll='eza -l'
@@ -33,10 +33,16 @@ fi
 
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-pokemon-colorscripts --no-title -s -r
+if [ ! -z "$(command -v pokemon-colorscripts)" ]
+then
+  pokemon-colorscripts --no-title -s -r
+fi
 
 # Set-up FZF key bindings (CTRL R for fuzzy history finder)
-source <(fzf --zsh)
+if [ ! -z "$(command -v fzf)" ]
+then
+  source <(fzf --zsh)
+fi
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
