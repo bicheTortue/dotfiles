@@ -1,20 +1,21 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
-#ZSH_THEME="gruvbox"
-#SOLARIZED_THEME="dark"
+if test -d $HOME/.oh-my-zsh; then
+  export ZSH="$HOME/.oh-my-zsh"
 
-plugins=(
-  git
-  archlinux
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
+  ZSH_THEME="agnoster"
 
-source $ZSH/oh-my-zsh.sh
+  plugins=(
+    git
+    archlinux
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+  )
+
+  source $ZSH/oh-my-zsh.sh
+fi
 
 # Check archlinux plugin commands here
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
