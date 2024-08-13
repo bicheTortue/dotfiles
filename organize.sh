@@ -82,7 +82,7 @@ then
   ln -fs $DIR/ssh/config $HOME/.ssh/config
   for f in ssh/*.pub
   do
-    KEY_TAG=$(awk 'END {print $NF}' $f)
+    KEY_TAG=$(awk '{print $2}' $f)
     if [ -z "$(grep $KEY_TAG $HOME/.ssh/authorized_keys)" ]
     then
       echo -e "  Adding $f to authorized keys"
