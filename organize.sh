@@ -11,7 +11,7 @@ NC='\033[0m' # No Color
 ###############################
 
 # bashrc
-if [ ! -z "$(which bash 2> /dev/null)" ]
+if [ ! -z "$(command -v bash)" ]
 then
   echo -e "${GREEN}bash is installed, linking config${NC}"
   ln -fs $DIR/bashrc $HOME/.bashrc
@@ -20,7 +20,7 @@ else
 fi
 
 # zshrc
-if [ ! -z "$(which zsh 2> /dev/null)" ]
+if [ ! -z "$(command -v zsh)" ]
 then
   echo -e "${GREEN}zsh is installed, linking config${NC}"
   ln -fs $DIR/zshrc $HOME/.zshrc
@@ -34,7 +34,7 @@ fi
 mkdir -p $HOME/.config
 
 # kitty
-if [ ! -z "$(which kitty 2> /dev/null)" ]
+if [ ! -z "$(command -v kitty)" ]
 then
   echo -e "${GREEN}Kitty is installed, linking config${NC}"
   rm -rf $HOME/.config/kitty
@@ -44,7 +44,7 @@ else
 fi
 
 # hyprland
-if [ ! -z "$(which Hyprland 2> /dev/null)" ]
+if [ ! -z "$(command -v Hyprland)" ]
 then
   echo -e "${GREEN}Hyprland is installed, linking config${NC}"
   rm -rf $HOME/.config/hypr
@@ -54,7 +54,7 @@ else
 fi
 
 # waybar
-if [ ! -z "$(which waybar 2> /dev/null)" ]
+if [ ! -z "$(command -v waybar)" ]
 then
   echo -e "${GREEN}Waybar is installed, linking config${NC}"
   rm -rf $HOME/.config/waybar
@@ -64,7 +64,7 @@ else
 fi
 
 # starship prompt
-if [ ! -z "$(which starship 2> /dev/null)" ]
+if [ ! -z "$(command -v starship)" ]
 then
   echo -e "${GREEN}Starship is installed, linking config${NC}"
   ln -fs $DIR/starship.toml $HOME/.config/starship.toml
@@ -75,7 +75,7 @@ fi
 ####################
 # ssh config files #
 ####################
-if [ ! -z "$(which ssh 2> /dev/null)" ]
+if [ ! -z "$(command -v ssh)" ]
 then
   echo -e "${GREEN}ssh is installed, linking config${NC}"
   mkdir -p $HOME/.ssh
