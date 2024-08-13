@@ -80,7 +80,11 @@ if [ ! -z "$(command -v vim)" ]
 then
   echo -e "${GREEN}Vim is installed, linking config${NC}"
   ln -fs $DIR/vimrc $HOME/.vimrc
-  ln -fs $DIR/vim $HOME/.vim
+  mkdir -p $HOME/vim/bundle
+  if [ ! -z "$(command -v git)" ]
+  then
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  fi
   vim +PluginInstall! +qall
 else
   echo -e "${RED}Vim is not installed on this machine${NC}"
