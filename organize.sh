@@ -72,6 +72,20 @@ else
   echo -e "${RED}Starship is not installed on this machine${NC}"
 fi
 
+##############
+# vim config #
+##############
+
+if [ ! -z "$(command -v vim)" ]
+then
+  echo -e "${GREEN}Vim is installed, linking config${NC}"
+  ln -fs $DIR/vimrc $HOME/.vimrc
+  ln -fs $DIR/vim $HOME/.vim
+  vim +PluginInstall! +qall
+else
+  echo -e "${RED}Vim is not installed on this machine${NC}"
+fi
+
 ####################
 # ssh config files #
 ####################
@@ -93,40 +107,8 @@ else
   echo -e "${RED}ssh is not installed on this machine${NC}"
 fi
 
-exit
-
-# vim general config
-ln -fs $DIR/vimrc $HOME/.vimrc
-ln -fs $DIR/vimrc.bundles $HOME/.vimrc.bundles
-rm -rf $HOME/.vim
-ln -fs $DIR/vim $HOME/.vim
-
-##################################
-# Files in the .config directory #
-##################################
-
-
-
-# neovim
-rm -rf $HOME/.config/nvim
-ln -fs $DIR/nvim $HOME/.config/nvim
-
-# i3
-rm -rf $HOME/.config/i3
-ln -fs $DIR/i3 $HOME/.config/i3
-
-# Sway
-rm -rf $HOME/.config/sway
-ln -fs $DIR/i3 $HOME/.config/sway
-
-
-# polybar
-rm -rf $HOME/.config/polybar
-ln -fs $DIR/polybar $HOME/.config/polybar
-
 ###############
 # backgrounds #
 ###############
 
-# rm -rf $HOME/.config/bg
-ln -sf $DIR/bg $HOME/Pictures/
+ln -sf $DIR/bg $HOME/Pictures/backgrounds

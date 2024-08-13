@@ -17,7 +17,7 @@ Host *-*
   ########
 
   # Only use tunnel server if the server is not directly accesible
-Match !host "ducas" exec "! ping ${$(echo %n)%%-*} -c 1"
+Match !host "ducas" exec "! ping ${$(echo %n)%%-*} -c 1 2> /dev/null"
   ProxyJump ducas
 
   # Tunneling machine
