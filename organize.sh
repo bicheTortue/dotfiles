@@ -94,6 +94,16 @@ else
   echo -e "${Red}Starship is not installed on this machine${NC}"
 fi
 
+# spotifyd
+if [ ! -z "$(command -v spotifyd)" ]
+then
+  echo -e "${Green}Spotifyd is installed, linking config${NC}"
+  mkdir -p $HOME/.config/spotifyd
+  ln -fs $DIR/spotifyd.conf $HOME/.config/spotifyd/spotifyd.conf
+else
+  echo -e "${Red}Spotifyd is not installed on this machine${NC}"
+fi
+
 ##############
 # vim config #
 ##############
