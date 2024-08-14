@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 
+source $HOME/.config/user-dirs.dirs # Languages specific forlders
 DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -122,5 +123,8 @@ fi
 # backgrounds #
 ###############
 
-mkdir -p $HOME/Pictures/backgrounds
-ln -sf $DIR/bg $HOME/Pictures/backgrounds
+if [[ ! $DISPLAY =~ "localhost" ]]
+then
+  echo -e "${GREEN}Found graphical environment, linking backgrounds${NC}"
+  ln -sf $DIR/bg $XDG_PICTURES_DIR/backgrounds
+fi
