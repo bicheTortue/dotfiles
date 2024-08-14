@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-
-source ./colors
 DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # The dotfiles repo directory
+
+source $DIR/colors
 source $HOME/.config/user-dirs.dirs # Languages specific forlders
 
 ###############################
