@@ -1,11 +1,9 @@
 #!/usr/bin/env sh
 
 
+source ./colors
+DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # The dotfiles repo directory
 source $HOME/.config/user-dirs.dirs # Languages specific forlders
-DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
 
 ###############################
 # Files in the home directory #
@@ -14,19 +12,19 @@ NC='\033[0m' # No Color
 # bashrc
 if [ ! -z "$(command -v bash)" ]
 then
-  echo -e "${GREEN}bash is installed, linking config${NC}"
+  echo -e "${Green}bash is installed, linking config${NC}"
   ln -fs $DIR/bashrc $HOME/.bashrc
 else
-  echo -e "${RED}bash is not installed on this machine${NC}"
+  echo -e "${Red}bash is not installed on this machine${NC}"
 fi
 
 # zshrc
 if [ ! -z "$(command -v zsh)" ]
 then
-  echo -e "${GREEN}zsh is installed, linking config${NC}"
+  echo -e "${Green}zsh is installed, linking config${NC}"
   ln -fs $DIR/zshrc $HOME/.zshrc
 else
-  echo -e "${RED}zsh is not installed on this machine${NC}"
+  echo -e "${Red}zsh is not installed on this machine${NC}"
 fi
 
 ##################################
@@ -37,40 +35,40 @@ mkdir -p $HOME/.config
 # kitty
 if [ ! -z "$(command -v kitty)" ]
 then
-  echo -e "${GREEN}Kitty is installed, linking config${NC}"
+  echo -e "${Green}Kitty is installed, linking config${NC}"
   rm -rf $HOME/.config/kitty
   ln -sf $DIR/kitty $HOME/.config/kitty
 else
-  echo -e "${RED}Kitty is not installed on this machine${NC}"
+  echo -e "${Red}Kitty is not installed on this machine${NC}"
 fi
 
 # hyprland
 if [ ! -z "$(command -v Hyprland)" ]
 then
-  echo -e "${GREEN}Hyprland is installed, linking config${NC}"
+  echo -e "${Green}Hyprland is installed, linking config${NC}"
   rm -rf $HOME/.config/hypr
   ln -sf $DIR/hypr $HOME/.config/hypr
 else
-  echo -e "${RED}Hyprland is not installed on this machine${NC}"
+  echo -e "${Red}Hyprland is not installed on this machine${NC}"
 fi
 
 # waybar
 if [ ! -z "$(command -v waybar)" ]
 then
-  echo -e "${GREEN}Waybar is installed, linking config${NC}"
+  echo -e "${Green}Waybar is installed, linking config${NC}"
   rm -rf $HOME/.config/waybar
   ln -sf $DIR/waybar $HOME/.config/waybar
 else
-  echo -e "${RED}Waybar is not installed on this machine${NC}"
+  echo -e "${Red}Waybar is not installed on this machine${NC}"
 fi
 
 # starship prompt
 if [ ! -z "$(command -v starship)" ]
 then
-  echo -e "${GREEN}Starship is installed, linking config${NC}"
+  echo -e "${Green}Starship is installed, linking config${NC}"
   ln -fs $DIR/starship.toml $HOME/.config/starship.toml
 else
-  echo -e "${RED}Starship is not installed on this machine${NC}"
+  echo -e "${Red}Starship is not installed on this machine${NC}"
 fi
 
 ##############
@@ -79,7 +77,7 @@ fi
 
 if [ ! -z "$(command -v vim)" ]
 then
-  echo -e "${GREEN}Vim is installed, linking config${NC}"
+  echo -e "${Green}Vim is installed, linking config${NC}"
   ln -fs $DIR/vimrc $HOME/.vimrc
   mkdir -p $HOME/vim/bundle
   if [ ! -z "$(command -v git)" ]
@@ -95,7 +93,7 @@ then
     echo "git is needed to install the plugin manager"
   fi
 else
-  echo -e "${RED}Vim is not installed on this machine${NC}"
+  echo -e "${Red}Vim is not installed on this machine${NC}"
 fi
 
 ####################
@@ -103,7 +101,7 @@ fi
 ####################
 if [ ! -z "$(command -v ssh)" ]
 then
-  echo -e "${GREEN}ssh is installed, linking config${NC}"
+  echo -e "${Green}ssh is installed, linking config${NC}"
   mkdir -p $HOME/.ssh
   ln -fs $DIR/ssh/config $HOME/.ssh/config
   for f in ssh/*.pub
@@ -116,7 +114,7 @@ then
     fi
   done
 else
-  echo -e "${RED}ssh is not installed on this machine${NC}"
+  echo -e "${Red}ssh is not installed on this machine${NC}"
 fi
 
 ###############
@@ -125,6 +123,6 @@ fi
 
 if [[ ! $DISPLAY =~ "localhost" ]]
 then
-  echo -e "${GREEN}Found graphical environment, linking backgrounds${NC}"
+  echo -e "${Green}Found graphical environment, linking backgrounds${NC}"
   ln -sf $DIR/bg $XDG_PICTURES_DIR/backgrounds
 fi
