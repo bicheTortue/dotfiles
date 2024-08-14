@@ -43,6 +43,7 @@ then
       git clone https://github.com/zsh-users/zsh-autosuggestions $DIR/omz/plugins/zsh-autosuggestions &> /dev/null
       git clone https://github.com/zsh-users/zsh-syntax-highlighting $DIR/omz/plugins/zsh-syntax-highlighting &> /dev/null
     fi
+    rm -rf $HOME/.oh-my-zsh/custom
     ln -sf $DIR/omz $HOME/.oh-my-zsh/custom
   fi
 else
