@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 
-if test -d $HOME/.oh-my-zsh; then
+if test -d $HOME/.oh-my-zsh
+then
   export ZSH="$HOME/.oh-my-zsh"
 
   ZSH_THEME="valgnoster"
@@ -15,13 +16,6 @@ if test -d $HOME/.oh-my-zsh; then
   )
 
   source $ZSH/oh-my-zsh.sh
-else
-  read -p "Do you want to install oh my zsh ? [Y/n]" -n 1 -r
-  echo    # (optional) move to a new line
-  if [[ $REPLY =~ ^[Yy]$ ]]
-  then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  fi
 fi
 
 # Check archlinux plugin commands here

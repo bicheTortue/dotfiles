@@ -23,6 +23,28 @@ if [ ! -z "$(command -v zsh)" ]
 then
   echo -e "${Green}zsh is installed, linking config${NC}"
   ln -fs $DIR/zshrc $HOME/.zshrc
+
+  # Asking to install omz if not installed
+  if ! test -d $HOME/.oh-my-zsh
+  then
+    read -p "Do you want to install oh my zsh ? [Y/n]" -n 1 -r
+    echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+  fi
+  if test -d $HOME/.oh-my-zsh
+  then
+    if ! test -d $DIR/omz/plugins
+    then
+      echo "  Installing plugins..."
+      mkdir -p $DIR/omz/plugins
+      git clone https://github.com/zsh-users/zsh-autosuggestions $DIR/omz/plugins/zsh-autosuggestions &> /dev/null
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting $DIR/omz/plugins/zsh-syntax-highlighting &> /dev/null
+    fi
+    ln -sf $DIR/omz $HOME/.oh-my-zsh/custom
+  fi
 else
   echo -e "${Red}zsh is not installed on this machine${NC}"
 fi
