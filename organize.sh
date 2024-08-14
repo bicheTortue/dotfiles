@@ -83,7 +83,7 @@ then
   mkdir -p $HOME/vim/bundle
   if [ ! -z "$(command -v git)" ]
   then
-    if test -d $HOME/.vim/bundle/Vundle.vim
+    if ! test -d $HOME/.vim/bundle/Vundle.vim
     then
       echo "  Downloading plugin manager..."
       git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim &> /dev/null
