@@ -112,7 +112,7 @@ if [ ! -z "$(command -v vim)" ]
 then
   echo -e "${Green}Vim is installed, linking config${NC}"
   ln -fs $DIR/vimrc $HOME/.vimrc
-  mkdir -p $HOME/vim/bundle
+  #mkdir -p $HOME/.vim/bundle
   if [ ! -z "$(command -v git)" ]
   then
     if ! test -d $HOME/.vim/bundle/Vundle.vim
