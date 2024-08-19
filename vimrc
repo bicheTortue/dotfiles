@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'morhetz/gruvbox'
 
+Plugin 'vim-airline/vim-airline'
 
 " Autoformater
 Plugin 'vim-autoformat/vim-autoformat'
