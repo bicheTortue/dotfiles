@@ -9,7 +9,7 @@ Host *
   # Allows to connect directly to tmux (session name is after the '-')
 Host *-*
   RequestTTY yes
-  RemoteCommand tmux new-session -A -s ${%n}
+  RemoteCommand tmux -u new-session -A -s ${%n}
 
 
   #########
