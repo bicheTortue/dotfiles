@@ -27,12 +27,13 @@ then
   # Asking to install omz if not installed
   if ! test -d $HOME/.oh-my-zsh
   then
-    read -p "Do you want to install oh my zsh ? [Y/n]" -n 1 -r
-    echo    # (optional) move to a new line
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    fi
+    echo "Do you want to install oh my zsh ?"
+    select yn in "Yes" "No"; do
+      case $yn in
+        Yes ) sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";;
+        No ) ;;
+      esac
+    done
   fi
   if test -d $HOME/.oh-my-zsh
   then
@@ -157,5 +158,5 @@ fi
 if [[ ! $DISPLAY =~ "localhost" ]]
 then
   echo -e "${Green}Found graphical environment, linking backgrounds${NC}"
-  ln -sf $DIR/bg $XDG_PICTURES_DIR/backgrounds
+  ln -sf $DIR/bg $XDG_PICTURES_DIR/wallpapers
 fi
