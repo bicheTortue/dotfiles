@@ -98,8 +98,11 @@ set background=dark    " Setting dark mode
 " Formatting
 map <leader>q gqip
 
-let fts = ['markdown', 'yaml']
-autocmd FileType * if index(fts, &filetype) == -1  | au BufWrite * :Autoformat
+autocmd FileType markdown,yaml let b:autoformat_autoindent=0
+au BufWrite * :Autoformat
+
+" let fts = ['markdown', 'yaml']
+" autocmd FileType * if index(fts, &filetype) == -1  | au BufWrite * :Autoformat
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
