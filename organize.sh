@@ -171,6 +171,6 @@ then
   if [ ! -z "$(command -v dconf)" ]
   then
     echo -e "${Green}Gnome is installed, linking dconf config${NC}"
-    dconf load / < $DIR/dconf-settings.ini
+    dconf load / < $DIR/gnome-shell/dconf-settings.ini
   fi
 fi
