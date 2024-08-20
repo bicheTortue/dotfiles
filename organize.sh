@@ -158,5 +158,19 @@ fi
 if [[ ! $DISPLAY =~ "localhost" ]]
 then
   echo -e "${Green}Found graphical environment, linking backgrounds${NC}"
+  rm -rf $XDG_PICTURES_DIR/wallpapers
   ln -sf $DIR/bg $XDG_PICTURES_DIR/wallpapers
+fi
+
+######
+# DE #
+######
+
+if [ ! -z "$(command -v gnome-shell)" ]
+then
+  if [ ! -z "$(command -v dconf)" ]
+  then
+    echo -e "${Green}Gnome is installed, linking dconf config${NC}"
+    dconf load / < $DIR/dconf-settings.ini
+  fi
 fi
