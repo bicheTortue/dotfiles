@@ -141,7 +141,7 @@ then
   for f in ssh/*.pub
   do
     KEY_TAG=$(awk '{print $2}' $f)
-    if [ -z "$(grep $KEY_TAG $HOME/.ssh/authorized_keys &> /dev/null)" ]
+    if [ -z "$(grep $KEY_TAG $HOME/.ssh/authorized_keys)" ]
     then
       echo -e "  Adding $f to authorized keys"
       cat $f >> $HOME/.ssh/authorized_keys
