@@ -51,6 +51,15 @@ else
   echo -e "${Red}zsh is not installed on this machine${NC}"
 fi
 
+# tmux
+if [ ! -z "$(command -v tmux)" ]
+then
+  echo -e "${Green}tmux is installed, linking config${NC}"
+  ln -fs $DIR/tmux.conf $HOME/.tmux.conf
+else
+  echo -e "${Red}tmux is not installed on this machine${NC}"
+fi
+
 ##################################
 # Files in the .config directory #
 ##################################
