@@ -168,9 +168,12 @@ fi
 
 if [ ! -z "$(command -v gnome-shell)" ]
 then
+  echo -e "${Green}Gnome is installed, adding custom theme${NC}"
+  mkdir -p $HOME/.themes/floating-panel/gnome-shell
+  ln -sf $DIR/gnome-shell/floating-panel.css $HOME/.themes/floating-panel/gnome-shell/gnome-shell.css
   if [ ! -z "$(command -v dconf)" ]
   then
-    echo -e "${Green}Gnome is installed, linking dconf config${NC}"
+    echo -e "${Green}dconf is installed, linking its config${NC}"
     dconf load / < $DIR/gnome-shell/dconf-settings.ini
   fi
 fi
