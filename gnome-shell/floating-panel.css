@@ -1,0 +1,11 @@
+#panel {
+  background-color: rgba(0,0,0,0.25);
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-weight: bold;
+  height: 2em;
+  border-radius: 8px;
+  box-shadow: none;
+  transition-duration: 250ms; }
