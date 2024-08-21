@@ -1,4 +1,4 @@
-#
+
 # ~/.bashrc
 #
 
@@ -33,4 +33,9 @@ PS1='\[\033[01;36m\]\u\[\033[01;31m\]@\[\033[01;32m\]\h\[\033[01;34m\]\w\[\033[0
 if [ ! -z "$(which starship 2> /dev/null)" ]
 then
   eval "$(starship init bash)"
+fi
+
+if [ ! -z "$(command -v quartus)" ]
+then
+  export QSYS_ROOTDIR="/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
 fi
