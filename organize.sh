@@ -28,7 +28,6 @@ then
   if ! test -d $HOME/.oh-my-zsh
   then
     read -p "  Do you want to install oh my zsh ? [y/N]" -n 1 -r
-    echo    # (optional) move to a new line
     case "$REPLY" in
       [yY][eE][sS]|[yY])
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -185,7 +184,6 @@ then
   if [ ! -z "$(command -v dconf)" ]
   then
     read -p "  dconf is installed, do you want to load the config ? [y/N]" -n 1 -r
-    echo    # (optional) move to a new line
     case "$REPLY" in
       [yY][eE][sS]|[yY])
         echo -e "${Green}  Loading config${NC}"
