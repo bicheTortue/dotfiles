@@ -1,76 +1,76 @@
-  #######
-  # All #
-  #######
+#######
+# All #
+#######
 
-  # Sets the correct TERM value
+# Sets the correct TERM value
 Host *
-  SetEnv TERM=xterm-256color
+SetEnv TERM=xterm-256color
 
-  # Allows to connect directly to tmux (session name is after the '-')
+# Allows to connect directly to tmux (session name is after the '-')
 Host *-*
-  RequestTTY yes
-  RemoteCommand tmux -u new-session -A -s ${%n}
+RequestTTY yes
+RemoteCommand tmux -2 -u new-session -A -s ${%n}
 
 
-  #########
-  # local #
-  #########
+#########
+# local #
+#########
 
 Host brigitte
-  User biche
-  Hostname 192.168.1.33
+User biche
+Hostname 192.168.1.33
 
-  ########
-  # LIP6 #
-  ########
+########
+# LIP6 #
+########
 
-  # Only use tunnel server if the server is not directly accesible
+# Only use tunnel server if the server is not directly accesible
 Match !host "ducas" exec "tmp=%n; ! ping ${tmp/-*/} -c 1 &> /dev/null"
-  ProxyJump ducas
+ProxyJump ducas
 
-  # Tunneling machine
+# Tunneling machine
 Host ducas
-  User barbaza
-  Hostname ducas.lip6.fr
+User barbaza
+Hostname ducas.lip6.fr
 
 Host fox*
-  Hostname fox
-  User barbaza
-  ForwardX11 yes
+Hostname fox
+User barbaza
+ForwardX11 yes
 
 Host bip*
-  Hostname bip
-  User barbaza
-  ForwardX11 yes
+Hostname bip
+User barbaza
+ForwardX11 yes
 
 Host bop*
-  Hostname bop
-  User barbaza
-  ForwardX11 yes
+Hostname bop
+User barbaza
+ForwardX11 yes
 
 
-  ######################################
-  #             Deprecated             #
-  ######################################
+######################################
+#             Deprecated             #
+######################################
 
-  ###########
-  # Tecnico #
-  ###########
+###########
+# Tecnico #
+###########
 Host fatima2
-  Hostname fatima2.vps.tecnico.ulisboa.pt
-  User ist1105607
-  ForwardX11 yes
+Hostname fatima2.vps.tecnico.ulisboa.pt
+User ist1105607
+ForwardX11 yes
 
 Host fatima
-  Hostname fatima.vps.tecnico.ulisboa.pt
-  User ist1105607
-  ForwardX11 yes
+Hostname fatima.vps.tecnico.ulisboa.pt
+User ist1105607
+ForwardX11 yes
 
-  #########
-  # INESC #
-  #########
+#########
+# INESC #
+#########
 Host inesc
-  Hostname figaro.inesc-id.pt
-  Port 2525
-  User vbarbaza
-  ForwardX11 yes
+Hostname figaro.inesc-id.pt
+Port 2525
+User vbarbaza
+ForwardX11 yes
