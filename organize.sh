@@ -182,7 +182,12 @@ then
   ln -sf $DIR/gnome-shell/floating-panel.css $HOME/.themes/floating-panel/gnome-shell/gnome-shell.css
   if [ ! -z "$(command -v dconf)" ]
   then
-    echo -e "${Green}dconf is installed, linking its config${NC}"
-    dconf load / < $DIR/gnome-shell/dconf-settings.ini
+    echo -e "${Green}dconf is installed, do you want to load the config ?${NC}"
+    select yn in "Yes" "No"; do
+      case $yn in
+        Yes ) dconf load / < $DIR/gnome-shell/dconf-settings.ini;;
+        No ) ;;
+      esac
+    done
   fi
 fi
