@@ -27,13 +27,15 @@ then
   # Asking to install omz if not installed
   if ! test -d $HOME/.oh-my-zsh
   then
-    echo "Do you want to install oh my zsh ?"
-    select yn in "Yes" "No"; do
-      case $yn in
-        Yes ) sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";;
-        No ) ;;
-      esac
-    done
+    read -p "  Do you want to install oh my zsh ? [y/N]" -n 1 -r
+    echo    # (optional) move to a new line
+    case "$REPLY" in
+      [yY][eE][sS]|[yY])
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        ;;
+      *)
+        ;;
+    esac
   fi
   if test -d $HOME/.oh-my-zsh
   then
@@ -182,12 +184,16 @@ then
   ln -sf $DIR/gnome-shell/floating-panel.css $HOME/.themes/floating-panel/gnome-shell/gnome-shell.css
   if [ ! -z "$(command -v dconf)" ]
   then
-    echo -e "${Green}dconf is installed, do you want to load the config ?${NC}"
-    select yn in "Yes" "No"; do
-      case $yn in
-        Yes ) dconf load / < $DIR/gnome-shell/dconf-settings.ini;;
-        No ) ;;
-      esac
-    done
+    read -p "  dconf is installed, do you want to load the config ? [y/N]" -n 1 -r
+    echo    # (optional) move to a new line
+    case "$REPLY" in
+      [yY][eE][sS]|[yY])
+        echo -e "${Green}  Loading config${NC}"
+        dconf load / < $DIR/gnome-shell/dconf-settings.ini
+        ;;
+      *)
+        echo -e "${Red}  The config has not been loaded${NC}"
+        ;;
+    esac
   fi
 fi
