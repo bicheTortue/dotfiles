@@ -98,6 +98,9 @@ set background=dark    " Setting dark mode
 " Formatting
 map <leader>q gqip
 
+let g:formatdef_custom_vhdl = "'vsg --fix -f '.expand('%')"
+"let g:formatters_vhdl = ['custom_vhdl']
+
 autocmd FileType markdown,yaml let b:autoformat_autoindent=0
 au BufWrite * :Autoformat
 

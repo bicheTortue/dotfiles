@@ -21,6 +21,9 @@ fi
 # Check archlinux plugin commands here
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/archlinux
 
+###########
+# aliases #
+###########
 if [ ! -z "$(command -v eza)" ]
 then
   alias ls='eza'
@@ -33,12 +36,21 @@ else
   alias lla='ls -hlFa'
 fi
 
+ssprint() {
+  ssh $1 lpr < $2
+}
+
+####################
+# Program Specific #
+####################
+
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
 if [ ! -z "$(command -v pokemon-colorscripts)" ]
 then
   pokemon-colorscripts --no-title -s -r
 fi
+
 
 # Set-up FZF key bindings (CTRL R for fuzzy history finder)
 if [ ! -z "$(command -v fzf)" ]

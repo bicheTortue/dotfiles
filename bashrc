@@ -8,7 +8,7 @@
 ###########
 # aliases #
 ###########
-if [ ! -z "$(which eza 2> /dev/null)" ]
+if [ ! -z "$(command -v eza)" ]
 then
   alias ls='eza'
   alias ll='eza -l'
@@ -20,6 +20,10 @@ else
   alias lla='ls -hlFa'
 fi
 
+ssprint() {
+  ssh $1 lpr < $2
+}
+
 #################
 # Prompt styles #
 #################
@@ -30,7 +34,7 @@ PS1='\[\033[01;36m\]\u\[\033[01;31m\]@\[\033[01;32m\]\h\[\033[01;34m\]\w\[\033[0
 ####################
 # Program Specific #
 ####################
-if [ ! -z "$(which starship 2> /dev/null)" ]
+if [ ! -z "$(command -v starship)" ]
 then
   eval "$(starship init bash)"
 fi
