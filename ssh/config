@@ -33,6 +33,11 @@ Host ducas
   User barbaza
   Hostname ducas.lip6.fr
 
+Host ubuntu*
+  Hostname flcian02
+  User barbaza
+  ForwardX11 yes
+
 Host fox*
   Hostname fox
   User barbaza
