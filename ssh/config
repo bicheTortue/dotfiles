@@ -34,7 +34,7 @@ Host ducas
   Hostname ducas.lip6.fr
 
 Host ubuntu*
-  Hostname flcian02
+  Hostname 132.227.102.109
   User barbaza
   ForwardX11 yes
 
