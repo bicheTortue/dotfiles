@@ -46,14 +46,10 @@ then
       git clone https://github.com/zsh-users/zsh-syntax-highlighting $DIR/omz/plugins/zsh-syntax-highlighting &> /dev/null
     fi
     for plugin in $DIR/omz/plugins/*; do
-      if [[ $plugin != *example* ]]; then
-        ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
-      fi
+      ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
     done
     for theme in $DIR/omz/themes/*; do
-      if [[ $theme != *example* ]]; then
-        ln -sf $theme $HOME/.oh-my-zsh/custom/themes
-      fi
+      ln -sf $theme $HOME/.oh-my-zsh/custom/themes
     done
   fi
 else
