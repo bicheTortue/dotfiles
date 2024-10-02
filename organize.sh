@@ -45,8 +45,16 @@ then
       git clone https://github.com/zsh-users/zsh-autosuggestions $DIR/omz/plugins/zsh-autosuggestions &> /dev/null
       git clone https://github.com/zsh-users/zsh-syntax-highlighting $DIR/omz/plugins/zsh-syntax-highlighting &> /dev/null
     fi
-    rm -rf $HOME/.oh-my-zsh/custom
-    ln -sf $DIR/omz $HOME/.oh-my-zsh/custom
+    for plugin in $DIR/omz/plugins/*; do
+      if [[ $plugin != *example* ]]; then
+        ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
+      fi
+    done
+    for theme in $DIR/omz/themes/*; do
+      if [[ $theme != *example* ]]; then
+        ln -sf $theme $HOME/.oh-my-zsh/custom/themes
+      fi
+    done
   fi
 else
   echo -e "${Red}zsh is not installed on this machine${NC}"
