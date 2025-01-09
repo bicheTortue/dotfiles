@@ -14,6 +14,9 @@ Plugin 'morhetz/gruvbox'
 
 Plugin 'vim-airline/vim-airline'
 
+" Autocomplete
+Plugin 'girishji/vimcomplete'
+
 " Autoformater
 Plugin 'vim-autoformat/vim-autoformat'
 
