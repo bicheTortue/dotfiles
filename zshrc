@@ -37,6 +37,12 @@ else
 fi
 
 ssprint() {
+  if [ $# -lt 2 ]
+  then
+    echo "Usage: $funcstack[1] <host> <file>"
+    return
+  fi
+
   ssh $1 lpr < $2
 }
 
