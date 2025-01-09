@@ -18,7 +18,7 @@ Host *-*
 
 Host brigitte
   User biche
-  Hostname 192.168.1.33
+  #Hostname 192.168.1.25
 
   ########
   # LIP6 #
@@ -50,6 +50,11 @@ Host bip*
 
 Host bop*
   Hostname bop
+  User barbaza
+  ForwardX11 yes
+
+Host convergence*
+  Hostname front.convergence.lip6.fr
   User barbaza
   ForwardX11 yes
 
