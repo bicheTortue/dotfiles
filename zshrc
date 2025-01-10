@@ -36,6 +36,8 @@ else
   alias lla='ls -hlFa'
 fi
 
+alias sdate='date +%d/%m/%y'
+
 ssprint() {
   if [ $# -lt 2 ]
   then
