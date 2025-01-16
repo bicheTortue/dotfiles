@@ -63,7 +63,7 @@ Host convergence*
 
 Host node*
   LocalForward 5421 localhost:5421
-  Hostname %n.convergence.lip6.fr
+  Hostname %h.convergence.lip6.fr
   User barbaza
   ProxyJump convergence
   sessionType none
