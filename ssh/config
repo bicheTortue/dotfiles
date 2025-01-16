@@ -11,9 +11,6 @@ Host *-*
   RequestTTY yes
   RemoteCommand tmux -u new-session -A -s ${%n}
 
-Host *$
-  sessionType none
-
 
   #########
   # local #
@@ -66,10 +63,10 @@ Host convergence*
 
 Host node*
   LocalForward 5421 localhost:5421
-  Hostname %h.convergence.lip6.fr
+  Hostname %n.convergence.lip6.fr
   User barbaza
   ProxyJump convergence
-
+  sessionType none
 
 
   ######################################
