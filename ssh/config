@@ -28,7 +28,7 @@ Host *jupyter
   LocalForward 8888 localhost:8888
 
   # Only use tunnel server if the server is not directly accesible
-Match !host "ducas" exec "tmp=%n; ! ping ${tmp/-*/} -c 1 &> /dev/null"
+Match !host "ducas" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 &> /dev/null"
   ProxyJump ducas
 
   # Tunneling machine
