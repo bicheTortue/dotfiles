@@ -43,9 +43,9 @@ ssprint() {
   then
     echo "Usage: $funcstack[1] <host> <file>"
     return
+  else
+    ssh $1 lpr < $2
   fi
-
-  ssh $1 lpr < $2
 }
 
 ####################
