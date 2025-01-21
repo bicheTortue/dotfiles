@@ -41,10 +41,26 @@ alias sdate='date +%d/%m/%y'
 ssprint() {
   if [ $# -lt 2 ]
   then
-    echo "Usage: $funcstack[1] <host> <file>"
-    return
+    echo "Usage: $funcstack[1] <host> <file> [opts]"
+    echo "Use --staples to staple the pages"
+    echo "Use -# to choose the number of copies"
   else
-    ssh $1 lpr < $2
+    host=$1
+    file=$2
+    shift; shift
+      while [[ $# -gt 0 ]]; do
+        case $1 in
+          --staples)
+            staple="-o Staple=StapleON -o StapleLocation=SinglePortrait"
+            shift
+            ;;
+          *)
+            pos_args+=("$1") # save positional arg
+            shift # past argument
+            ;;
+        esac
+      done
+    ssh $host lpr $pos_args $staple < $file
   fi
 }
 
