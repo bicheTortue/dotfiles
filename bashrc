@@ -57,8 +57,7 @@ fi
 
 if [ $(hostname) == "front" ]; then
   send-file(){
-  if [ $# -lt 1 ]
-  then
+  if [ $# -lt 1 ]; then
     echo "Usage: $funcstack[1] <file>"
     return
   else
