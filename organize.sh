@@ -119,6 +119,22 @@ else
   echo -e "${Red}Spotifyd is not installed on this machine${NC}"
 fi
 
+# matplotlib for python
+
+if [ ! -z "$(command -v python)" ]
+then
+  echo -e "${Green}python is installed, linking configs${NC}"
+  if python -c "import matplotlib" &> /dev/null ; then
+    echo -e "  ${Green}matplotlib module is installed, linking config${NC}"
+    mkdir -p $HOME/.config/matplotlib
+    ln -fs $DIR/matplotlibrc $HOME/.config/matplotlib/matplotlibrc
+  else
+    echo -e "  ${Red}matplotlib is not installed on this machine${NC}"
+  fi
+else
+  echo -e "${Red}python is not installed on this machine${NC}"
+fi
+
 ##############
 # vim config #
 ##############
