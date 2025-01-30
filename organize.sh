@@ -136,7 +136,7 @@ else
 fi
 
 # Inkscape Icons
-if [ ! -z "$(command -v inkscape)" ]
+if command -v inkscape &> /dev/null
 then
   echo -e "${Green}Inkscape is installed, linking configs${NC}"
   for symbols in $DIR/inkscape/symbols/*; do
