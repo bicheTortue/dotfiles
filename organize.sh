@@ -135,6 +135,17 @@ else
   echo -e "${Red}python is not installed on this machine${NC}"
 fi
 
+# Inkscape Icons
+if [ ! -z "$(command -v inkscape)" ]
+then
+  echo -e "${Green}Inkscape is installed, linking configs${NC}"
+  for symbols in $DIR/inkscape/symbols/*; do
+    ln -sf $symbols $HOME/.config/inkscape/symbols/
+  done
+else
+  echo -e "${Red}Inkscape is not installed on this machine${NC}"
+fi
+
 ##############
 # vim config #
 ##############
