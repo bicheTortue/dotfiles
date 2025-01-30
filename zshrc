@@ -41,25 +41,23 @@ alias sdate='date +%d/%m/%y'
 ssprint() {
   if [ $# -lt 2 ]
   then
-    echo "Usage: $funcstack[1] <host> <file> [options]"
-    help="--help"
-    staple_help="--staples               Staples the pages together"
+    local help="--help"
   else
-    host=$1
-    file=$2
+    local host=$1
+    local file=$2
     shift; shift
     while [[ $# -gt 0 ]]; do
       case $1 in
-        --staples)
-          staple="-o Staple=StapleON -o StapleLocation=SinglePortrait"
+        -s|--staples)
+          local staple="-o Staple=StapleON -o StapleLocation=SinglePortrait"
           shift
           ;;
         --help)
-          help="--help"
+          local help="--help"
           shift
           ;;
         *)
-          pos_args+=("$1") # save positional arg
+          local pos_args+=("$1") # save positional arg
           shift # past argument
           ;;
       esac
@@ -68,8 +66,9 @@ ssprint() {
   if [ -z "$help" ]; then
     ssh $host lpr $pos_args $staple < $file
   else
+    echo "Usage: $funcstack[1] <host> <file> [options]"
     lpr $help | tail -n +2
-    echo $staple_help
+    echo "-s, --staples           Staples the pages together"
   fi
 }
 
