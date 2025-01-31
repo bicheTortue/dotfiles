@@ -1,9 +1,3 @@
 [submodule "python/barbalib"]
-	path = python/barbalib
-	url = git@github.com:bicheTortue/barbalib.git
-[submodule "omz/plugins/zsh-autosuggestions"]
-	path = omz/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "omz/plugins/zsh-syntax-highlighting"]
-	path = omz/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
+  path = python/barbalib
+  url = git@github.com:bicheTortue/barbalib.git
