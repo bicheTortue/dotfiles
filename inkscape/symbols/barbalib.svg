@@ -25,28 +25,26 @@ style="fill:black;stroke:none">
 <symbol id="wireless-waves">
 <title>Wireless waves</title>
 <path
-d="m 13,35.524897 c 0,0 29,-23 60,0"
+d="m 22,40 a 40,40 0 0 1 40,0"
 id="path1"
 stroke="#000000"
 fill="none"
 stroke-width="4"
 stroke-linecap="round" />
 <path
-d="m 8,26.524897 c 0,0 34,-30.0000005 71,0"
-id="path1-3"
+d="m 12,30 a 50,50 0 0 1 60,0"
+id="path1-2"
 stroke="#000000"
 fill="none"
 stroke-width="4"
-stroke-linecap="round"
-sodipodi:nodetypes="cc" />
+stroke-linecap="round" />
 <path
-d="m 2,17.524897 c 0,0 42,-35 81,0"
-id="path1-3-5"
+d="m 2,20 a 60,60 0 0 1 80,0"
+id="path1-2-7"
 stroke="#000000"
 fill="none"
 stroke-width="4"
-stroke-linecap="round"
-sodipodi:nodetypes="cc" />
+stroke-linecap="round" />
 </symbol>
 
 <symbol id="chip">

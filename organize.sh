@@ -41,9 +41,9 @@ then
     if ! test -d $DIR/omz/plugins
     then
       echo "  Installing plugins..."
-      mkdir -p $DIR/omz/plugins
-      git clone https://github.com/zsh-users/zsh-autosuggestions $DIR/omz/plugins/zsh-autosuggestions &> /dev/null
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting $DIR/omz/plugins/zsh-syntax-highlighting &> /dev/null
+      #mkdir -p $DIR/omz/plugins
+      git submodule init --quiet $DIR/omz/plugins/zsh-autosuggestions
+      git submodule init --quiet $DIR/omz/plugins/zsh-syntax-highlighting
     fi
     for plugin in $DIR/omz/plugins/*; do
       ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
@@ -130,6 +130,11 @@ then
     ln -fs $DIR/matplotlibrc $HOME/.config/matplotlib/matplotlibrc
   else
     echo -e "  ${Red}matplotlib is not installed on this machine${NC}"
+  fi
+  if ! test -d $DIR/omz/plugins
+  then
+    echo "  Installing barbalib module..."
+    git submodule init python/barbalib #--quiet
   fi
 else
   echo -e "${Red}python is not installed on this machine${NC}"
@@ -226,3 +231,5 @@ then
     esac
   fi
 fi
+
+git submodule update --quiet
