@@ -36,22 +36,17 @@ then
         ;;
     esac
   fi
-  if test -d $HOME/.oh-my-zsh
-  then
-    if ! test -d $DIR/omz/plugins
-    then
-      echo "  Installing plugins..."
-      #mkdir -p $DIR/omz/plugins
-      git submodule init --quiet $DIR/omz/plugins/zsh-autosuggestions
-      git submodule init --quiet $DIR/omz/plugins/zsh-syntax-highlighting
-    fi
-    for plugin in $DIR/omz/plugins/*; do
-      ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
-    done
-    for theme in $DIR/omz/themes/*; do
-      ln -sf $theme $HOME/.oh-my-zsh/custom/themes
-    done
-  fi
+  git submodule init --quiet $DIR/omz/plugins/zsh-autosuggestions
+  git submodule init --quiet $DIR/omz/plugins/zsh-syntax-highlighting
+  echo "  Installing plugins..."
+  git submodule update --quiet
+  #rm -rf $HOME/.oh-my-zsh/custom/plugins/*
+  for plugin in $DIR/omz/plugins/*; do
+    ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
+  done
+  for theme in $DIR/omz/themes/*; do
+    ln -sf $theme $HOME/.oh-my-zsh/custom/themes
+  done
 else
   echo -e "${Red}zsh is not installed on this machine${NC}"
 fi
@@ -131,11 +126,10 @@ then
   else
     echo -e "  ${Red}matplotlib is not installed on this machine${NC}"
   fi
-  if ! test -d $DIR/omz/plugins
-  then
-    echo "  Installing barbalib module..."
-    git submodule init python/barbalib #--quiet
-  fi
+  echo "  Installing barbalib module..."
+  git submodule init --quiet $DIR/python/barbalib
+  git submodule update --quiet
+  export PYTHONPATH=$PYTHONPATH:$DIR/python/barbalib #Work in progress
 else
   echo -e "${Red}python is not installed on this machine${NC}"
 fi
@@ -232,4 +226,3 @@ then
   fi
 fi
 
-git submodule update --quiet
