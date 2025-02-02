@@ -3,7 +3,7 @@
 DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # The dotfiles repo directory
 
 source $DIR/colors
-source $HOME/.config/user-dirs.dirs # Languages specific forlders
+source $HOME/.config/user-dirs.dirs # Languages specific folders
 
 ###############################
 # Files in the home directory #
@@ -14,6 +14,7 @@ if [ ! -z "$(command -v bash)" ]
 then
   echo -e "${Green}bash is installed, linking config${NC}"
   ln -fs $DIR/bashrc $HOME/.bashrc
+  ln -fs $DIR/somshrc $HOME/.comshrc
 else
   echo -e "${Red}bash is not installed on this machine${NC}"
 fi
@@ -23,7 +24,7 @@ if [ ! -z "$(command -v zsh)" ]
 then
   echo -e "${Green}zsh is installed, linking config${NC}"
   ln -fs $DIR/zshrc $HOME/.zshrc
-
+  ln -fs $DIR/comshrc $HOME/.comshrc
   # Asking to install omz if not installed
   if ! test -d $HOME/.oh-my-zsh
   then
@@ -38,7 +39,7 @@ then
   fi
   git submodule init --quiet $DIR/omz/plugins/zsh-autosuggestions
   git submodule init --quiet $DIR/omz/plugins/zsh-syntax-highlighting
-  echo "  Installing plugins..."
+  echo "  Downloading plugins..."
   git submodule update --quiet
   #rm -rf $HOME/.oh-my-zsh/custom/plugins/*
   for plugin in $DIR/omz/plugins/*; do
@@ -114,7 +115,7 @@ else
   echo -e "${Red}Spotifyd is not installed on this machine${NC}"
 fi
 
-# matplotlib for python
+# python
 
 if [ ! -z "$(command -v python)" ]
 then
@@ -126,10 +127,11 @@ then
   else
     echo -e "  ${Red}matplotlib is not installed on this machine${NC}"
   fi
-  echo "  Installing barbalib module..."
+  echo "  Downloading barbalib module..."
   git submodule init --quiet $DIR/python/barbalib
   git submodule update --quiet
-  export PYTHONPATH=$PYTHONPATH:$DIR/python/barbalib #Work in progress
+  mkdir -p $HOME/.config/python
+  ln -fs $DIR/python/barbalib $HOME/.config/python/
 else
   echo -e "${Red}python is not installed on this machine${NC}"
 fi
@@ -157,7 +159,7 @@ then
   if [ ! -z "$(command -v git)" ]
   then
     if ! test -d $HOME/.vim/bundle/Vundle.vim
-    then
+    then # Add as submodule
       echo "  Downloading plugin manager..."
       git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim &> /dev/null
     fi
@@ -225,4 +227,3 @@ then
     esac
   fi
 fi
-
