@@ -38,7 +38,7 @@ ssprint() {
     shift
     ;;
   *)
-    local pos_args+=("$1") # save positional arg
+    pos_args+=("$1") # save positional arg
     shift # past argument
     ;;
   esac
