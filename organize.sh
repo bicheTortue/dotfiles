@@ -140,6 +140,7 @@ fi
 if command -v inkscape &> /dev/null
 then
   echo -e "${Green}Inkscape is installed, linking configs${NC}"
+  mkdir -p $HOME/.config/inkscape/symbols/
   for symbols in $DIR/inkscape/symbols/*; do
     ln -sf $symbols $HOME/.config/inkscape/symbols/
   done
