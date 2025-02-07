@@ -66,4 +66,5 @@ fi
 if [ ! -z "$(command -v python)" ]
 then
 export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/
+export JUPYTER_PATH=$JUPYTER_PATH:$HOME/.config/python/
 fi
