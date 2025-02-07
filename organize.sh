@@ -117,7 +117,7 @@ fi
 
 # python
 
-if [ ! -z "$(command -v python)" ]
+if [ ! -z "$(command -v python3)" ]
 then
   echo -e "${Green}python is installed, linking configs${NC}"
   if python -c "import matplotlib" &> /dev/null ; then
