@@ -40,7 +40,7 @@ then
   git submodule init --quiet $DIR/omz/plugins/zsh-autosuggestions
   git submodule init --quiet $DIR/omz/plugins/zsh-syntax-highlighting
   echo "  Downloading plugins..."
-  git submodule update --quiet
+  git submodule update --remote --quiet
   #rm -rf $HOME/.oh-my-zsh/custom/plugins/*
   for plugin in $DIR/omz/plugins/*; do
     ln -sf $plugin $HOME/.oh-my-zsh/custom/plugins
@@ -129,7 +129,7 @@ then
   fi
   echo "  Downloading barbalib module..."
   git submodule init --quiet $DIR/python/barbalib
-  git submodule update --quiet
+  git submodule update --remote --quiet
   mkdir -p $HOME/.config/python
   ln -fs $DIR/python/barbalib $HOME/.config/python/
 else
