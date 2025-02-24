@@ -144,6 +144,14 @@ then
   for symbols in $DIR/inkscape/symbols/*; do
     ln -sf $symbols $HOME/.config/inkscape/symbols/
   done
+  if python -c "import svg2tikz" &> /dev/null ; then
+    echo -e "  ${Green}svg2tikz module is installed, linking inkscape extension${NC}"
+    mkdir -p $HOME/.config/inkscape/extensions/
+    echo -e "  Work In Progress for svg2tikz extension"
+  else
+    echo -e "  ${Red}svg2tikz is not installed on this machine${NC}"
+  fi
+
 else
   echo -e "${Red}Inkscape is not installed on this machine${NC}"
 fi
