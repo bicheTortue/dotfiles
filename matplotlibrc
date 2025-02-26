@@ -366,7 +366,6 @@
 #axes.edgecolor:     black   # axes edge color
 #axes.linewidth:     0.8     # edge line width
 axes.grid:          True   # display grid or not
-axes.grid.linestyle:     --
 #axes.grid.axis:     both    # which axis the grid should apply to
 #axes.grid.which:    major   # grid lines at {major, minor, both} ticks
 #axes.titlelocation: center  # alignment of the title: {left, right, center}
@@ -521,7 +520,7 @@ axes.labelsize:     large  # font size of the x and y labels
 ## * GRIDS                                                                   *
 ## ***************************************************************************
 #grid.color:     "#b0b0b0"  # grid color
-#grid.linestyle: -          # solid
+grid.linestyle: --          # solid
 #grid.linewidth: 0.8        # in points
 #grid.alpha:     1.0        # transparency, between 0.0 and 1.0
 
