@@ -26,6 +26,9 @@ Host brigitte
   # Used to forward the ports for jupyter notebooks
 Host *jupyter
   LocalForward 8888 localhost:8888
+  PermitLocalCommand yes
+  #LocalCommand echo "%r@%h"
+  LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" /tmp/jupyter.log' | xargs xdg-open
 
   # Only use tunnel server if the server is not directly accesible
 Match !host "ducas" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 &> /dev/null"
