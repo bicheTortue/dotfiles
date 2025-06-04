@@ -64,7 +64,7 @@ export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/
 export JUPYTER_PATH=$JUPYTER_PATH:$HOME/.config/python/
 fi
 
-if [ ! -z "$(command -v vsim)" ]
-then
+#if [ ! -z "$(command -v vsim)" ]; then
+if [ "$(cat /proc/sys/kernel/hostname)" = "Jesus2" ]; then
 export LM_LICENSE_FILE=$HOME/.local/share/licenses/license-questa.dat
 fi
