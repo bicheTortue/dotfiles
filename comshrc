@@ -58,13 +58,13 @@ ssprint() {
 # Program Specific #
 ####################
 
-if [ ! -z "$(command -v quartus)" ]
-then
-export QSYS_ROOTDIR="/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
-fi
-
 if [ ! -z "$(command -v python3)" ]
 then
 export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/
 export JUPYTER_PATH=$JUPYTER_PATH:$HOME/.config/python/
+fi
+
+if [ ! -z "$(command -v vsim)" ]
+then
+export LM_LICENSE_FILE=$HOME/.local/share/licenses/license-questa.dat
 fi
