@@ -23,7 +23,7 @@ fi
 # Host Specific #
 #################
 
-if [ $(hostnamectl hostname) == "front" ]; then
+if [ $(hostnamectl hostname) = "front" ]; then
   # >>> conda initialize >>>
   # !! Contents within this block are managed by 'conda init' !!
   __conda_setup="$('/software/python/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
