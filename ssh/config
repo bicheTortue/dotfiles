@@ -27,7 +27,7 @@ Host brigitte
 Host *jupyter
   LocalForward 8888 localhost:8888
   PermitLocalCommand yes
-  LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" /tmp/jupyter.log' | xargs xdg-open &> /dev/null
+  LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" ~/.local/share/jupyter.log' | xargs xdg-open &> /dev/null
 
   # Only use tunnel server if the server is not directly accesible
 Match !host "ducas" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 &> /dev/null"
