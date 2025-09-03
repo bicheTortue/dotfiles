@@ -9,7 +9,7 @@ Host *
   # Allows to connect directly to tmux (session name is after the '-')
 Host *-*
   RequestTTY yes
-  RemoteCommand tmux -u new-session -A -s ${%n} status-style 'bg=blue'
+  RemoteCommand tmux -u new-session -A -s ${%n} \; set-option status-bg brightcyan
 
 
   #########
@@ -26,6 +26,7 @@ Host brigitte
   # Used to forward the ports for jupyter notebooks
 Host *jupyter
   LocalForward 8888 localhost:8888
+  #RemoteCommand tmux set-option status-bg cyan
   PermitLocalCommand yes
   LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" ~/.local/share/jupyter.log' | xargs xdg-open &> /dev/null
 
