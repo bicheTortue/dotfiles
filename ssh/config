@@ -18,6 +18,7 @@ Host *-*
 
 Host brigitte
   User biche
+  Hostname nuage.barbaza.org
 
   ########
   # LIP6 #
