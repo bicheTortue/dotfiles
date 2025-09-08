@@ -14,7 +14,7 @@ if [ ! -z "$(command -v bash)" ]
 then
   echo -e "${Green}bash is installed, linking config${NC}"
   ln -fs $DIR/bashrc $HOME/.bashrc
-  ln -fs $DIR/somshrc $HOME/.comshrc
+  ln -fs $DIR/comshrc $HOME/.comshrc
 else
   echo -e "${Red}bash is not installed on this machine${NC}"
 fi
