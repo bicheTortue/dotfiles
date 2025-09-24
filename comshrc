@@ -21,37 +21,48 @@ alias sdate='date +%d/%m/%y'
 #############
 
 ssprint() {
-  if [ $# -lt 2 ]
-    then
-      local help="--help"
-  else
-    local host=$1
-      local file=$2
-      shift; shift
-      while [[ $# -gt 0 ]]; do
-        case $1 in
-          -s|--staples)
-          local staple="-o Staple=StapleON -o StapleLocation=SinglePortrait"
-          shift
-          ;;
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -s|--staples)
+      local staple="-o Staple=StapleON -o StapleLocation=SinglePortrait"
+      shift
+      ;;
   --help)
     local help="--help"
     shift
     ;;
   *)
-    pos_args+=("$1") # save positional arg
-    shift # past argument
-    ;;
+    if [ -f "$1" ]; then
+      local files="$files $1"
+        elif ssh $1 exit &> /dev/null ; then
+
+        local host=$1
+    else
+      pos_args+=("$1") # save positional arg
+        fi
+        shift # past argument
+        ;;
   esac
     done
-    fi
-    if [ -z "$help" ]; then
-      ssh $host lpr $pos_args $staple < $file
+    if [ -z "$host" ] ; then
+      echo "Error : No server was specified"
+
     else
-      echo "Usage: $funcstack[1] <host> <file> [options]"
-        lpr $help | tail -n +2
-        echo "-s, --staples           Staples the pages together"
-        fi
+      if [ -z "$files" ] ; then
+        echo "Error : No file was specified"
+      else
+        set -o shwordsplit
+
+          for file in $files; do
+            ssh $host lpr $pos_args $staple < $file
+              done
+              exit 0
+              fi
+              fi
+              echo "Usage: $funcstack[1] <host> <file> [options]"
+              lpr --help | tail -n +2
+              echo "-s, --staples           Staples the pages together"
 }
 
 
