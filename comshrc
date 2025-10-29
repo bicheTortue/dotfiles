@@ -57,7 +57,7 @@ ssprint() {
           for file in $files; do
             ssh $host lpr $pos_args $staple < $file
               done
-              exit 0
+              return 0
               fi
               fi
               echo "Usage: $funcstack[1] <host> <file> [options]"
