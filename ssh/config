@@ -30,7 +30,7 @@ Host noe
 
   # Used to forward the ports for jupyter notebooks
 Host *jupyter
-  LocalForward 8888 localhost:8888
+  LocalForward 825 localhost:825
   #RemoteCommand tmux set-option status-bg cyan
   PermitLocalCommand yes
   LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" ~/.local/share/jupyter.log' | xargs xdg-open &> /dev/null
