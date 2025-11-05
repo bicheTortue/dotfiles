@@ -84,8 +84,6 @@ if [ "$(cat /proc/sys/kernel/hostname)" = "Jesus2" ]; then
 export LM_LICENSE_FILE=$HOME/.local/share/licenses/license-questa.dat
 elif [ "$(cat /proc/sys/kernel/hostname)" = "Judas" ]; then
 export LM_LICENSE_FILE=$HOME/.local/share/licenses/questa.dat
-fi
-
-if [[ "$(cat /proc/sys/kernel/hostname)" == "bop"* ]]; then
+elif [[ "$(cat /proc/sys/kernel/hostname)" == "bop"* ]]; then
 export LM_LICENSE_FILE=26000@house:26002@house
 fi
