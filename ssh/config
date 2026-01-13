@@ -29,7 +29,7 @@ Host *jupyter
   LocalForward 2272 localhost:2272
   #RemoteCommand tmux set-option status-bg cyan
   PermitLocalCommand yes
-  LocalCommand ssh %r@%h "python -m notebook list | awk 'NR==2 {print $1}'" | xargs xdg-open &> /dev/null
+  LocalCommand ssh %r@%h "python -m notebook list | awk 'NR==2 {print \$1}'" | xargs xdg-open &> /dev/null
 
 Host *marimo
   LocalForward 8888 localhost:8888
