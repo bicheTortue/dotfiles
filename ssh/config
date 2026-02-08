@@ -20,6 +20,9 @@ Host noe
   User deck
   Hostname Noe
 
+Host francisco
+  User root
+
   ########
   # LIP6 #
   ########
