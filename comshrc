@@ -77,6 +77,14 @@ export JUPYTER_PATH=$JUPYTER_PATH:$HOME/.config/python/
 fi
 
 #################
+# User Specific #
+#################
+
+if [ "$USER" = "barbaza" ]; then
+PATH=$PATH:$HOME/.local/bin
+fi
+
+#################
 # Host Specific #
 #################
 
