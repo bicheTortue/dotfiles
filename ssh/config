@@ -16,6 +16,7 @@ Host *-*
   # local #
   #########
 
+
 Host noe
   User deck
   Hostname Noe
@@ -26,6 +27,10 @@ Host francisco
   ########
   # LIP6 #
   ########
+
+Host amram
+  Hostname 132.227.92.34
+  Port 8022
 
   # Used to forward the ports for jupyter notebooks
 Host *jupyter

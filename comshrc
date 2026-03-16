@@ -75,6 +75,9 @@ then
 export PYTHONPATH=$PYTHONPATH:$HOME/.config/python/
 export JUPYTER_PATH=$JUPYTER_PATH:$HOME/.config/python/
 fi
+if test -d $HOME/.local/bin; then
+export PATH="$PATH:$HOME/.local/bin"
+fi
 
 #################
 # Host Specific #
