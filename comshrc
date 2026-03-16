@@ -80,6 +80,14 @@ export PATH="$PATH:$HOME/.local/bin"
 fi
 
 #################
+# User Specific #
+#################
+
+if [ "$USER" = "barbaza" ]; then
+PATH=$PATH:$HOME/.local/bin
+fi
+
+#################
 # Host Specific #
 #################
 
