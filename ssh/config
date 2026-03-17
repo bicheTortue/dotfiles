@@ -45,7 +45,8 @@ Host *marimo
   LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" ~/.local/share/marimo.log' | xargs xdg-open &> /dev/null
 
   # Only use tunnel server if the server is not directly accesible
-Match !host "ducas" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 &> /dev/null"
+  #Match !host "ducas" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 &> /dev/null"
+Match host "ubuntu*,fox*,bip*,bop*,convergence*,node*" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 -W 1 &> /dev/null"
   ProxyJump ducas
 
   # Tunneling machine
