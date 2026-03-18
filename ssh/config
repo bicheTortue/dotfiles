@@ -45,8 +45,8 @@ Host *marimo
   LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" ~/.local/share/marimo.log' | xargs xdg-open &> /dev/null
 
   # Only use tunnel server if the server is not directly accesible
-  #Match !host "ducas" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 &> /dev/null"
-Match host "ubuntu*,fox*,bip*,bop*,convergence*,node*" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 -W 1 &> /dev/null"
+  #Match host "ubuntu*,fox*,bip*,bop*,convergence*,node*" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 -W 1 &> /dev/null"
+Match tagged lip6 exec "tmp=%h; ! ping ${tmp/-*/} -c 1 -W 1 &> /dev/null"
   ProxyJump ducas
 
   # Tunneling machine
@@ -57,28 +57,34 @@ Host ducas
 Host ubuntu*
   Hostname flcian02
   User barbaza
+  Tag lip6
 
 Host fox*
   Hostname fox
   User barbaza
+  Tag lip6
 
 Host bip*
   Hostname bip
   User barbaza
+  Tag lip6
 
 Host bop*
   Hostname bop
   User barbaza
+  Tag lip6
 
 Host convergence*
   Hostname front.convergence.lip6.fr
   User barbaza
+  Tag lip6
 
 Host node*
   LocalForward 2272 localhost:2272
   Hostname %h.convergence.lip6.fr
   User barbaza
   ProxyJump convergence
+  Tag lip6
   #sessionType none
 
 
