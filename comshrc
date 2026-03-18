@@ -96,7 +96,7 @@ export LM_LICENSE_FILE=$HOME/.local/share/licenses/license-questa.dat
 elif [ "$(cat /proc/sys/kernel/hostname)" = "Judas" ]; then
 export LM_LICENSE_FILE=$HOME/.local/share/licenses/questa.dat
 export SALT_LICENSE_SERVER=$LM_LICENSE_FILE
-elif [[ "$(cat /proc/sys/kernel/hostname)" == "bop"* ]]; then
+elif [[ "$(cat /proc/sys/kernel/hostname)" == "b[io]p"* ]]; then
 export LM_LICENSE_FILE=26000@house:26002@house
 fi
 
