@@ -1,0 +1,10 @@
+[user]
+	name = Valentin BARBAZA
+	mail = valentin@barbaza.org
+	email = valentin@barbaza.org
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
