@@ -102,6 +102,7 @@ autocmd vimenter * ++nested colorscheme gruvbox " Setting the gruvbox theme
 set background=dark    " Setting dark mode
 
 " Formatting
+let g:tex_flavor = 'latex'
 map <leader>q gqip
 
 let g:formatdef_custom_vhdl = "'vsg --fix -f '.expand('%')"
