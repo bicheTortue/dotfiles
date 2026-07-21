@@ -16,6 +16,7 @@ Plugin 'vim-airline/vim-airline'
 
 Plugin 'honza/vim-snippets'
 
+Plugin 'ojroques/vim-oscyank'
 " Autocomplete
 "Plugin 'girishji/vimcomplete'
 
@@ -132,3 +133,7 @@ inoremap <expr> j JKescape('j')
 inoremap <expr> k JKescape('k')
 
 let g:airline_powerline_fonts = 1
+
+" clipboard support
+" " Copy default yanks to the system clipboard via OSC 52
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankRegister "' | endif
