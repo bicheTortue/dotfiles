@@ -24,6 +24,9 @@ Host noe
 Host francisco
   User root
 
+Host fernand
+  User root
+
   ########
   # LIP6 #
   ########

@@ -9,6 +9,10 @@ source $HOME/.config/user-dirs.dirs # Languages specific folders
 # Files in the home directory #
 ###############################
 
+# git
+echo -e "${Green}linking git config${NC}"
+ln -fs $DIR/gitconfig $HOME/.gitconfig
+
 # bashrc
 if [ ! -z "$(command -v bash)" ]
 then
