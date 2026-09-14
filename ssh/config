@@ -17,6 +17,10 @@ Host *-*
   #########
 
 
+Host ezechiel
+  User armada
+  Hostname Ezechiel
+
 Host noe
   User deck
   Hostname Noe
