@@ -18,8 +18,8 @@ Host *-*
 
 
 Host ezechiel
-  User armada
-  Hostname Ezechiel
+  User deck
+  Hostname ezechiel
 
 Host noe
   User deck
@@ -30,6 +30,11 @@ Host francisco
 
 Host fernand
   User root
+
+Host brigitte
+  User biche
+  Hostname nuage.barbaza.org
+  Port 2222
 
   ########
   # LIP6 #
