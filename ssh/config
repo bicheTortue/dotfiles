@@ -38,7 +38,7 @@ Host francisco
 Host fernand
   User root
 
-Host brigitte
+Host brigitte*
   User biche
   Hostname nuage.barbaza.org
   Port 2222
