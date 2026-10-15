@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -e
+
+APP="$HOME/Applications/generative-wallpapers"
+OUT="$HOME/.local/share/wallpapers/daily.png"
+
+mkdir -p "$(dirname "$OUT")"
+
+STYLES=(flow_field plasma voronoi nebula)
+STYLE="${STYLES[$((RANDOM % ${#STYLES[@]}))]}"
+  SEED="$(od -An -N4 -tu4 /dev/urandom | tr -d ' ')"
+
+  "$APP/.venv/bin/python" "$APP/wallpaper_generator.py" \
+    --style "$STYLE" --seed "$SEED" \
+    --width 1920 --height 1080 --output "$OUT"
+
+# Apply wallpaper
+gsettings set org.gnome.desktop.background picture-uri \
+  "file://$OUT"
+gsettings set org.gnome.desktop.background picture-uri-dark \
+  "file://$OUT"
+
+# Detect the wallpaper's dominant color family
+ACCENT="$(~/.local/bin/wallpaper-accent.py "$OUT")"
+
+# Apply the matching native GNOME accent color
+case "$ACCENT" in
+  blue|teal|green|yellow|orange|red|pink|purple|slate)
+    gsettings set org.gnome.desktop.interface accent-color "$ACCENT"
+    ;;
+  *)
+    gsettings set org.gnome.desktop.interface accent-color slate
+    ;;
+esac

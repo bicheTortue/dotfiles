@@ -5,6 +5,16 @@ DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) # The d
 source $DIR/colors
 source $HOME/.config/user-dirs.dirs # Languages specific folders
 
+#################
+# Homemade bins #
+#################
+echo -e "${Green}Linking local bin${NC}"
+mkdir -p "$HOME/.local/bin"
+for fbin in $DIR/bin/*
+do
+  ln -fs $fbin "$HOME/.local/bin/"
+done
+
 ###############################
 # Files in the home directory #
 ###############################
@@ -185,6 +195,7 @@ else
   echo -e "${Red}Vim is not installed on this machine${NC}"
 fi
 
+
 ####################
 # ssh config files #
 ####################
@@ -193,7 +204,7 @@ then
   echo -e "${Green}ssh is installed, linking config${NC}"
   mkdir -p $HOME/.ssh
   ln -fs $DIR/ssh/config $HOME/.ssh/config
-  for f in ssh/*.pub
+  for f in $DIR/ssh/*.pub
   do
     KEY_TAG=$(awk '{print $2}' $f)
     if [ -z "$(grep $KEY_TAG $HOME/.ssh/authorized_keys)" ]
