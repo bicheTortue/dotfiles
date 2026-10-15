@@ -11,6 +11,13 @@ Host *-*
   RequestTTY yes
   RemoteCommand tmux -u new-session -A -s ${%n} \; set-option status-bg brightcyan
 
+  # Used to forward the ports for jupyter notebooks
+Host *jupyter
+  LocalForward 2272 localhost:2272
+  #RemoteCommand tmux set-option status-bg cyan
+  PermitLocalCommand yes
+  LocalCommand ssh %r@%h "python -m notebook list | awk 'NR==2 {print \$1}'" | xargs xdg-open &> /dev/null
+
 
   #########
   # local #
@@ -43,18 +50,6 @@ Host brigitte
 Host amram
   Hostname 132.227.92.34
   Port 8022
-
-  # Used to forward the ports for jupyter notebooks
-Host *jupyter
-  LocalForward 2272 localhost:2272
-  #RemoteCommand tmux set-option status-bg cyan
-  PermitLocalCommand yes
-  LocalCommand ssh %r@%h "python -m notebook list | awk 'NR==2 {print \$1}'" | xargs xdg-open &> /dev/null
-
-Host *marimo
-  LocalForward 8888 localhost:8888
-  PermitLocalCommand yes
-  LocalCommand ssh %r@%h 'grep -m1 -o "http://localhost:[0-9]*/[^ ]*" ~/.local/share/marimo.log' | xargs xdg-open &> /dev/null
 
   # Only use tunnel server if the server is not directly accesible
 Match host "ubuntu*,fox*,bip*,bop*,convergence*,node*" exec "tmp=%h; ! ping ${tmp/-*/} -c 1 -W 1 &> /dev/null"
