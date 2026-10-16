@@ -84,11 +84,9 @@ mkdir -p $HOME/.config
 if [  "$(ps -p 1 -o comm=)" = "systemd" ]
 then
   echo -e "${Green}Systemd is the init system, linking and starting services${NC}"
-  systemctl --user daemon-reload
   for services in $DIR/systemd/*
   do
     ln -fs $services "$HOME/.config/systemd/user/"
-    systemctl --user enable --now $(basename $services)
   done
 else
   echo -e "${Red}Systemd is not the init system on this machine${NC}"
@@ -248,9 +246,15 @@ fi
 
 if [ ! -z "$(command -v gnome-shell)" ]
 then
-  echo -e "${Green}Gnome is installed, adding custom theme${NC}"
+  echo -e "${Green}Gnome is installed, adding custom theme and wallpaper generator${NC}"
   mkdir -p $HOME/.themes/floating-panel/gnome-shell
   ln -sf $DIR/gnome-shell/floating-panel.css $HOME/.themes/floating-panel/gnome-shell/gnome-shell.css
+  systemctl --user daemon-reload
+  for services in $DIR/systemd/daily-wallpaper.*
+  do
+    systemctl --user enable --now $(basename $services)
+  done
+
   if [ ! -z "$(command -v dconf)" ]
   then
     read -p "  dconf is installed, do you want to load the config ? [y/N]" -r
