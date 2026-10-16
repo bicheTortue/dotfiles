@@ -235,10 +235,14 @@ fi
 
 if [[ ! $DISPLAY =~ "localhost" ]]
 then
-  echo -e "${Green}Found graphical environment, linking backgrounds${NC}"
+  echo -e "${Green}Found graphical environment, linking wallpapers and generator${NC}"
   rm -rf $XDG_PICTURES_DIR/wallpapers
   ln -sf $DIR/bg $XDG_PICTURES_DIR/wallpapers
+  git submodule init --quiet $DIR/generative-wallpapers
+  git submodule update --remote --quiet
+  ln -sf $DIR/generative-wallpapers/wallpaper-generator.py "$HOME/.local/bin/wallpaper-generator"
 fi
+echo -e "${Green}Linking local bin${NC}"
 
 ######
 # DE #
