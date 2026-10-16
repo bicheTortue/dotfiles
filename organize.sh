@@ -242,7 +242,6 @@ then
   git submodule update --remote --quiet
   ln -sf $DIR/generative-wallpapers/wallpaper-generator.py "$HOME/.local/bin/wallpaper-generator"
 fi
-echo -e "${Green}Linking local bin${NC}"
 
 ######
 # DE #
