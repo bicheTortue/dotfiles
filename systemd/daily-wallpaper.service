@@ -1,0 +1,9 @@
+[Unit]
+Description=Generate a new procedural wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/daily-wallpaper
+
+[Install]
+WantedBy=default.target

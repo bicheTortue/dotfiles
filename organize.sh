@@ -80,6 +80,20 @@ fi
 ##################################
 mkdir -p $HOME/.config
 
+# systemd
+if [  "$(ps -p 1 -o comm=)" = "systemd" ]
+then
+  echo -e "${Green}Systemd is the init system, linking and starting services${NC}"
+  systemctl --user daemon-reload
+  for services in $DIR/systemd/*
+  do
+    ln -fs $services "$HOME/.config/systemd/user/"
+    systemctl --user enable --now $(basename $services)
+  done
+else
+  echo -e "${Red}Systemd is not the init system on this machine${NC}"
+fi
+
 # kitty
 if [ ! -z "$(command -v kitty)" ]
 then
