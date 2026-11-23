@@ -33,27 +33,25 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
+CURRENT_FG='black'
 
-case ${SOLARIZED_THEME:-dark} in
-  light) CURRENT_FG='white';;
-  *)     CURRENT_FG='black';;
-esac
+#CURRENT_FG='black'
 
 # Special Powerline characters
 
 () {
-local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-# NOTE: This segment separator character is correct.  In 2012, Powerline changed
-# the code points they use for their special characters. This is the new code point.
-# If this is not working for you, you probably have an old version of the
-# Powerline-patched fonts installed. Download and install the new version.
-# Do not submit PRs to change this unless you have reviewed the Powerline code point
-# history and have new information.
-# This is defined using a Unicode escape sequence so it is unambiguously readable, regardless of
-# what font the user is viewing this source code in. Do not replace the
-# escape sequence with a single literal character.
-# Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
-SEGMENT_SEPARATOR=$'\ue0b0'
+  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+  # NOTE: This segment separator character is correct.  In 2012, Powerline changed
+  # the code points they use for their special characters. This is the new code point.
+  # If this is not working for you, you probably have an old version of the
+  # Powerline-patched fonts installed. Download and install the new version.
+  # Do not submit PRs to change this unless you have reviewed the Powerline code point
+  # history and have new information.
+  # This is defined using a Unicode escape sequence so it is unambiguously readable, regardless of
+  # what font the user is viewing this source code in. Do not replace the
+  # escape sequence with a single literal character.
+  # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
+  SEGMENT_SEPARATOR=$'\ue0b0'
 }
 
 # Begin a segment
@@ -101,9 +99,9 @@ prompt_git() {
   fi
   local PL_BRANCH_CHAR
   () {
-  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-  PL_BRANCH_CHAR=$'\ue0a0'         # 
-}
+    local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+    PL_BRANCH_CHAR=$'\ue0a0'         # 
+  }
 local ref dirty mode repo_path
 
 if [[ "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; then
@@ -112,43 +110,43 @@ if [[ "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]]; 
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
     ref="◈ $(command git describe --exact-match --tags HEAD 2> /dev/null)" || \
     ref="➦ $(command git rev-parse --short HEAD 2> /dev/null)"
-      if [[ -n $dirty ]]; then
-        prompt_segment yellow black
-      else
-        prompt_segment green $CURRENT_FG
-      fi
+  if [[ -n $dirty ]]; then
+    prompt_segment yellow black
+  else
+    prompt_segment green $CURRENT_FG
+  fi
 
-      local ahead behind
-      ahead=$(command git log --oneline @{upstream}.. 2>/dev/null)
-      behind=$(command git log --oneline ..@{upstream} 2>/dev/null)
-      if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
-        PL_BRANCH_CHAR=$'\u21c5'
-      elif [[ -n "$ahead" ]]; then
-        PL_BRANCH_CHAR=$'\u21b1'
-      elif [[ -n "$behind" ]]; then
-        PL_BRANCH_CHAR=$'\u21b0'
-      fi
+  local ahead behind
+  ahead=$(command git log --oneline @{upstream}.. 2>/dev/null)
+  behind=$(command git log --oneline ..@{upstream} 2>/dev/null)
+  if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
+    PL_BRANCH_CHAR=$'\u21c5'
+  elif [[ -n "$ahead" ]]; then
+    PL_BRANCH_CHAR=$'\u21b1'
+  elif [[ -n "$behind" ]]; then
+    PL_BRANCH_CHAR=$'\u21b0'
+  fi
 
-      if [[ -e "${repo_path}/BISECT_LOG" ]]; then
-        mode=" <B>"
-      elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
-        mode=" >M<"
-      elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
-        mode=" >R>"
-      fi
+  if [[ -e "${repo_path}/BISECT_LOG" ]]; then
+    mode=" <B>"
+  elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
+    mode=" >M<"
+  elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
+    mode=" >R>"
+  fi
 
-      setopt promptsubst
-      autoload -Uz vcs_info
+  setopt promptsubst
+  autoload -Uz vcs_info
 
-      zstyle ':vcs_info:*' enable git
-      zstyle ':vcs_info:*' get-revision true
-      zstyle ':vcs_info:*' check-for-changes true
-      zstyle ':vcs_info:*' stagedstr '✚'
-      zstyle ':vcs_info:*' unstagedstr '±'
-      zstyle ':vcs_info:*' formats ' %u%c'
-      zstyle ':vcs_info:*' actionformats ' %u%c'
-      vcs_info
-      echo -n "${${ref:gs/%/%%}/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*' get-revision true
+  zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:*' stagedstr '✚'
+  zstyle ':vcs_info:*' unstagedstr '±'
+  zstyle ':vcs_info:*' formats ' %u%c'
+  zstyle ':vcs_info:*' actionformats ' %u%c'
+  vcs_info
+  echo -n "${${ref:gs/%/%%}/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
 fi
 }
 
@@ -218,6 +216,7 @@ prompt_hg() {
 # Dir: current working directory
 prompt_dir() {
   prompt_segment blue $CURRENT_FG '%~'
+  #prompt_segment blue $CURRENT_FG '%~'
 }
 
 # Virtualenv: current working virtualenv
