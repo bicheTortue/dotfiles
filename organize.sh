@@ -80,7 +80,8 @@ then
       git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm &> /dev/null
     fi
     echo "  Installing plugins..."
-    $HOME/.tmux/plugins/tpm/bin/install_plugins
+    $HOME/.tmux/plugins/tpm/bin/install_plugins &> /dev/null
+    $HOME/.tmux/plugins/tpm/bin/update_plugins all &> /dev/null
   else
     echo "git is needed to install the plugin manager"
   fi
