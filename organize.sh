@@ -71,6 +71,19 @@ if [ ! -z "$(command -v tmux)" ]
 then
   echo -e "${Green}tmux is installed, linking config${NC}"
   ln -fs $DIR/tmux.conf $HOME/.tmux.conf
+  if [ ! -z "$(command -v git)" ]
+  then
+    mkdir -p $HOME/.tmux/plugins
+    if ! test -d $HOME/.tmux/plguins/tpm
+    then # Add as submodule
+      echo "  Downloading plugin manager..."
+      git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm &> /dev/null
+    fi
+    echo "  Installing plugins..."
+    $HOME/.tmux/plugins/tpm/bin/install_plugins
+  else
+    echo "git is needed to install the plugin manager"
+  fi
 else
   echo -e "${Red}tmux is not installed on this machine${NC}"
 fi
