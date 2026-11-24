@@ -108,11 +108,9 @@ map <leader>q gqip
 let g:formatdef_custom_vhdl = "'vsg --fix -f '.expand('%')"
 "let g:formatters_vhdl = ['custom_vhdl']
 
-autocmd FileType markdown,yaml let b:autoformat_autoindent=0
-" au BufWrite * :Autoformat
-
-let fts = ['markdown', 'yaml', 'verilog']
-autocmd FileType * if index(fts, &filetype) == -1  | au BufWrite * :Autoformat
+let fts = ['markdown', 'yaml', 'verilog', 'bash']
+autocmd FileType * if index(fts, &filetype) != -1 | let b:autoformat_autoindent = 0
+autocmd BufWritePre * Autoformat
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
